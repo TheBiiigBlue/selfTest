@@ -26,6 +26,7 @@
         <module>utils-module</module>
         <module>java-module</module>
         <module>spring-boot-module</module>
+        <module>xgboost-src</module>
     </modules>
 
     <build>
