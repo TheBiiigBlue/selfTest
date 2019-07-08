@@ -22,13 +22,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <!--<module>java-module</module>-->
-        <!--<module>spark-module</module>-->
-        <!--&lt;!&ndash;<module>flink-module</module>&ndash;&gt;-->
-        <!--<module>util-module</module>-->
-        <!--&lt;!&ndash;<module>hadoop-module</module>&ndash;&gt;-->
-        <!--<module>xgboost-src</module>-->
-        <!--<module>spring-boot-module</module>-->
+        <module>spark-module</module>
     </modules>
 
     <build>

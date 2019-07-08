@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+    <!--hdfs集群路径名，也称集群名，与core-site.xml中对应-->
+    <property>
+        <name>dfs.nameservices</name>
+        <value>hcluster</value>
+    </property>
+    <!--NameNode地址集群标识（hcluster），最多两个-->
+    <property>
+        <name>dfs.ha.namenodes.hcluster</name>
+        <value>nn1,nn2</value>
+    </property>
+    <!--HDFS文件系统数据存储位置，可以分别保存到不同硬盘，突破单硬盘性能瓶颈，多个位置以逗号隔开-->
+    <property>
+        <name>dfs.data.dir</name>
+        <value>/home/hdfs/hadoop-2.7.4/data</value>
+    </property>
+    <!--数据副本数量，根据HDFS台数设置，默认3份-->
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+    <!--RPC端口,注意集群名字-->
+    <property>
+        <name>dfs.namenode.rpc-address.hcluster.nn1</name>
+        <value>master:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.hcluster.nn2</name>
+        <value>slave1:9000</value>
+    </property>
+    <!--NameNode HTTP访问地址,注意集群名字-->
+    <property>
+        <name>dfs.namenode.http-address.hcluster.nn1</name>
+        <value>master:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.hcluster.nn2</name>
+        <value>slave1:50070</value>
+    </property>
+    <!--NN存放元数据和日志位置-->
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/home/hdfs/hadoop-2.7.4/namenode_data</value>
+    </property>
+    <!--同时把NameNode元数据和日志存放在JournalNode上(/home/hadoop/journal/hcluster)-->
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://master:8485;slave1:8485;slave2:8485/hcluster</value>
+    </property>
+    <!--JournalNode上元数据和日志存放位置-->
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/home/hdfs/hadoop-2.7.4/journal</value>
+    </property>
+    <!--开启NameNode失败自动切换-->
+    <property>
+        <name>dfs.ha.automatic-failover.enabled</name>
+        <value>true</value>
+    </property>
+    <!--NameNode失败自动切换实现方式-->
+    <property>
+        <name>dfs.client.failover.proxy.provider.hcluster</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+    <!--隔离机制方法，确保任何时间只有一个NameNode处于活动状态-->
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>sshfence(hdfs)</value>
+    </property>
+    <!--使用sshfence隔离机制要SSH免密码认证-->
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/home/hdfs/.ssh/id_rsa</value>
+    </property>
+    <property>
+        <name>dfs.permissions</name>
+        <value>False</value>
+    </property>
+
+</configuration>
