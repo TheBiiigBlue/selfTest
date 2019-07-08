@@ -23,6 +23,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spark-module</module>
+        <module>utils-module</module>
     </modules>
 
     <build>
