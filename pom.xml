@@ -27,6 +27,7 @@
         <module>java-module</module>
         <module>spring-boot-module</module>
         <module>xgboost-src</module>
+        <module>hadoop-module</module>
     </modules>
 
     <build>
