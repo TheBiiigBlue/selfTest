@@ -24,6 +24,7 @@
     <modules>
         <module>spark-module</module>
         <module>utils-module</module>
+        <module>java-module</module>
     </modules>
 
     <build>
