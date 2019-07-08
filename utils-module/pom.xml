@@ -12,7 +12,7 @@
     <artifactId>utils-module</artifactId>
 
     <properties>
-        <fastjson.version>1.2.8</fastjson.version>
+        <fastjson.version>1.2.31</fastjson.version>
     </properties>
 
     <dependencies>
