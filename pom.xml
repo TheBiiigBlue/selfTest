@@ -25,6 +25,7 @@
         <module>spark-module</module>
         <module>utils-module</module>
         <module>java-module</module>
+        <module>spring-boot-module</module>
     </modules>
 
     <build>

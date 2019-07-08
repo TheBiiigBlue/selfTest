@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: mybatis-plus-module
+
+    #DATABASE CONFIG
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//10.10.8.206:1521/cmis
+    username: cmis_ftk
+    password: cmis_ftk
+    type: com.alibaba.druid.pool.DruidDataSource   #这里是配置druid连接池，以下都是druid的配置信息
+    filters: stat,wall,log4j
+    maxActive: 200
+    initialSize: 20
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    connection-properties: druid.stat.merggSql=ture;druid.stat.slowSqlMillis=5000
+
+  #redis
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        #最大阻塞等待时间(负数表示没限制)
+        max-wait: -1
+        #最大空闲
+        max-idle: 8
+        #最小空闲
+        min-idle: 0
+    timeout:  10000
+
+#
+##mybatis
+#mybatis:
+#  #把xml文件放在com.XX.mapper.*中可能会出现找到的问题，这里把他放在resource下的mapper中
+#  mapper-locations: classpath*:/daos/**/**Mapper.xml
+#  #实体扫描，多个package用逗号或者分号分隔
+#  #typeAliasesPackage: com.tdx.account_service.entity  #这里是实体类的位置
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    cache-enabled: false
+
+#logging  不同的目录不同的日志输出级别
+logging:
+  level:
+    root: info
+    com.caxs: debug

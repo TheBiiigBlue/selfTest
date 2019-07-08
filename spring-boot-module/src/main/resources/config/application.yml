@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: dev
+    #包含了后缀为dubbo的文件（启动时加载配置文件，多个文件以逗号隔开aa,bbb,cc）
+    include: param
+  #设置此属性 dubbo的@service 和 spring的 @Transactional即可以共存，可以正常发布服务了
+  aop:
+    proxy-target-class: false
